@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>第一个倒计时</title>
+    <style>
+        *{
+            margin:0;
+            padding:0;
+        }
+        body{
+            width: 100%;
+            overflow: hidden;
+            height:100%;
+        }
+        .container{
+            background: url('../b3.jpg') no-repeat 0px 0px;
+            background-size:cover;
+            position: absolute;
+            top:0;
+            left:0; 
+            width: 100%;
+            overflow: hidden;
+            height:100%;
+        }
+        .container:after{
+            content:'';
+            position: absolute;
+            top:0;
+            left:0;
+            z-index: 9;
+            width: 100%;
+            height:100%;
+            background: rgba(0,0,0,.5)
+        }
+        .time_container{
+            width: 100%;
+            display: flex;
+            position: absolute;
+            top:0;
+            left:0;
+            right:0;
+            z-index: 99;
+            bottom:0;
+            height:100px;
+            margin:auto;
+            align-items: center;
+            justify-content: center;
+        }
+        .show{
+            width: 66px;
+            height:100px;
+            font-size: 28px;
+            color:white;
+            position: relative;
+        }
+        .show_box{
+            text-align: center;
+            line-height: 100px;
+            border-radius: 12px;
+            width: 66px;
+            height:100px;
+            border:4px solid white;
+            transition: all 0.7s;
+            background: rgba(255,255,255,.5)
+        }
+        .now_show{
+            background: rgba(255,255,255,.1)
+        }
+        .text{
+            font-size: 20px;
+            position: absolute;
+            width: 66px;
+            left:0;
+            top:120px;
+            text-align: center;
+            color:white;
+        }
+    </style>
+</head>
+<body>
+    <div class='container'>
+        <div class='time_container'>
+            <div class='show'>
+                <div class='show_box days'>
+                    0
+                </div>
+                <span class='text'>days</span>
+            </div>
+            <div class='show' style='margin-left:50px;'>
+                <div class='show_box hours'>
+
+                </div>
+                <span class='text'>hours</span>
+            </div>
+            <div class='show' style='margin:0 50px;'>
+                <div class='show_box mintues'>
+
+                </div>
+                <span class='text'>mintues</span>
+            </div>
+            <div class='show'>
+                <div class='show_box seconds'>
+
+                </div>
+                <span class='text'>seconds</span>
+            </div>
+        </div>
+    </div>
+    <script>
+        let tiemr = null,
+            endTime = +new Date('2019-05-17 17:40:00'),
+            days = 0,
+            hours = 0,
+            mintues = 0,
+            seconds = 0;
+        timer = setInterval(()=>{
+            let now = + new Date(),
+                time = parseInt(( endTime - now ) / 1000);
+            seconds = time % 60 
+            mintues = parseInt(time % 3600 / 60)
+            hours = parseInt(time % (3600 * 24) / 3600)
+            days = parseInt(time / (3600 * 24))
+            if(days != document.querySelector('.days').innerHTML){
+                let el = document.querySelector('.days')
+                el.innerHTML = days
+                el.classList.add('now_show')
+                setTimeout(()=>{
+                    el.classList.remove('now_show')
+                },700)
+            }
+            if(hours != document.querySelector('.hours').innerHTML){
+                let el = document.querySelector('.hours')
+                el.innerHTML = hours
+                el.classList.add('now_show')
+                setTimeout(()=>{
+                    el.classList.remove('now_show')
+                },700)
+            }
+            if(mintues != document.querySelector('.mintues').innerHTML){
+                let el = document.querySelector('.mintues')
+                el.innerHTML = mintues
+                el.classList.add('now_show')
+                setTimeout(()=>{
+                    el.classList.remove('now_show')
+                },700)
+            }
+            if(seconds != document.querySelector('.seconds').innerHTML){
+                let el = document.querySelector('.seconds')
+                el.innerHTML = seconds
+                el.classList.add('now_show')
+                setTimeout(()=>{
+                    el.classList.remove('now_show')
+                },700)
+            }
+        },1000)
+    </script>
+</body>
+</html>
