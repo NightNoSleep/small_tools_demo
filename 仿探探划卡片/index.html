@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    body{
+        /*background: url('../img/b3.jpg') no-repeat 0px 0px;*/
+        background-size: 100%;
+    }
+    .container{
+        position: absolute;
+        top:0;
+        left:0;
+        right:0;
+        bottom:0;
+        margin: auto;
+        width: 100%;
+        height:400px;
+    }
+    .demo-div{
+        background: white;
+        box-shadow: 0px 0px 6px rgba(0,0,0,.5);
+        position: absolute;
+        left:0;
+        right:0;
+        margin:0 auto;
+        border-radius: 8px;
+    }
+    .div1{
+        width: 200px;
+        height:200px;
+        top:100px;
+        z-index: 3;
+    }
+    .div2{
+        width: 180px;
+        height:180px;
+        top:126px;
+        z-index: 2;
+    }
+    .div3{
+        width: 160px;
+        height:160px;
+        top:152px;
+        z-index: 1;
+    }
+</style>
+<body>
+    <div class="container">
+        <div class="demo-div div1"></div>
+        <div class="demo-div div2"></div>
+        <div class="demo-div div3"></div>
+    </div>
+<script>
+    let div1 = document.querySelectorAll('.container div')[0]
+    let div2 = document.querySelectorAll('.container div')[1]
+    let div3 = document.querySelectorAll('.container div')[2]
+    div1.ontouchstart = (e) => {
+        console.log(1, e)
+    }
+    div1.ontouchmove = (e) => {
+        console.log(2, e)
+    }
+    div1.ontouchcancel = (e) => {
+        console.log(3, e)
+    }
+    div1.ontouchend = (e) => {
+        console.log(4   , e)
+    }
+</script>
+</body>
+</html>
